@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "target": "es2020",
+    "module": "commonjs",
+    "removeComments": true,
+    "strict": true,
+    "noImplicitAny": true,
+    "resolveJsonModule": true,
+    "moduleResolution": "node",
+    "baseUrl": ".",
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "forceConsistentCasingInFileNames": true,
+    "sourceMap": true,
+    "strictNullChecks": true,
+    "types": ["node", "@types"],
+    "allowUnusedLabels": false,
+    "outDir": "./dist",
+    "declaration": true
+  },
+  "exclude": ["node_modules", "dist", "coverage", ".build", ".webpack", ".vscode"],
+  "include": ["src"],
+  "ts-node": {
+    "require": ["tsconfig-paths/register"]
+  }
+}

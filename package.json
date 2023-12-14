@@ -1,0 +1,25 @@
+{
+  "name": "algorithms",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "excersize-4": "esbuild src/functions/excersize-4.ts --bundle --outdir=dist --platform=node --sourcemap --target=esnext && node dist/excersize-4.js",
+    "warm-up": "esbuild src/functions/warm-up.ts --bundle --outdir=dist --platform=node --sourcemap --target=esnext && node dist/warm-up.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/uuid": "^9.0.2",
+    "dotenv": "^16.3.1",
+    "esbuild": "^0.18.17",
+    "prettier": "^3.0.0",
+    "ts-node": "^10.9.1"
+  },
+  "dependencies": {
+    "@types/heap": "^0.2.34",
+    "cyrillic-to-translit-js": "^3.2.1",
+    "heap": "^0.2.7",
+    "uuid": "^9.0.0"
+  }
+}
