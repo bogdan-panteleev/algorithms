@@ -2,20 +2,20 @@ import * as process from 'process';
 import fs from 'fs';
 import path from 'path';
 import { FileLogger, stringToArray } from './warm-up/helpers';
-import { getMaximumSplit } from './excersize-4/taskC';
+import { isPossibleToSortCarriages } from './trainings-3/task14';
+import { linelandiaMovement } from './trainings-3/task15';
 
 try {
   const fileLogger = new FileLogger(path.join(__dirname, './output.txt'));
   const data = fs.readFileSync(path.join(__dirname, './input.txt'));
   const rows = data.toString().trim().split(/\n/);
-  const matrix: number[][] = rows.slice(1).map(stringToArray);
-
   fileLogger.createFile();
-  const result = getMaximumSplit(matrix);
-  fileLogger.write(result.weight.toString());
-  fileLogger.write(result.vertexPerGroup.join(' '));
-  fileLogger.flushBuffer();
 
+  const movement = linelandiaMovement(stringToArray(rows[1]));
+
+  fileLogger.write(movement.join(' '));
+
+  fileLogger.flushBuffer();
   process.exit();
 } catch (err: unknown) {
   process.exit(1);
