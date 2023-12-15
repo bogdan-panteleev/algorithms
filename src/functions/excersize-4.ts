@@ -2,8 +2,7 @@ import * as process from 'process';
 import fs from 'fs';
 import path from 'path';
 import { FileLogger, stringToArray } from './warm-up/helpers';
-import { isPossibleToSortCarriages } from './trainings-3/task14';
-import { linelandiaMovement } from './trainings-3/task15';
+import { linelandiaMovement } from './trainings-3-division-B/task15';
 
 try {
   const fileLogger = new FileLogger(path.join(__dirname, './output.txt'));
