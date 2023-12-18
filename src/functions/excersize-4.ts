@@ -2,17 +2,17 @@ import * as process from 'process';
 import fs from 'fs';
 import path from 'path';
 import { FileLogger, stringToArray } from './warm-up/helpers';
-import { linelandiaMovement } from './trainings-3-division-B/task15';
+import { heapSort } from './trainings-3-division-B/task20';
 
 try {
   const fileLogger = new FileLogger(path.join(__dirname, './output.txt'));
   const data = fs.readFileSync(path.join(__dirname, './input.txt'));
-  const rows = data.toString().trim().split(/\n/);
+  const rows = data.toString().trim().split(/\n/).slice(1);
   fileLogger.createFile();
 
-  const movement = linelandiaMovement(stringToArray(rows[1]));
+  const result = heapSort(stringToArray(rows[0]));
 
-  fileLogger.write(movement.join(' '));
+  fileLogger.write(result.join(' '));
 
   fileLogger.flushBuffer();
   process.exit();

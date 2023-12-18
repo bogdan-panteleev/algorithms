@@ -9,7 +9,6 @@ export function stringToArray(str: string): number[] {
 
 export abstract class Logger {
   abstract write(str: string): void;
-  abstract writeCb(cb: () => string): void;
   abstract err(str: string): void;
 }
 
@@ -47,35 +46,12 @@ export class FileLogger extends Logger {
       this.flushBuffer();
     }
   }
-  writeCb(cb: () => string) {
-    this.buffer.push(cb);
-    if (this.buffer.length === this.bufferLength) {
-      this.flushBufferCb();
-    }
-  }
-
-  setBufferLength(val: number) {
-    this.bufferLength = val;
-  }
-
-  flushBufferCb() {
-    if (this.buffer.length) {
-      //@ts-ignore
-      const res = this.buffer.reduce((str, cb) => str + cb() + '\n', '');
-      fs.appendFileSync(this.filePath, res);
-      this.buffer.length = 0;
-    }
-  }
 
   flushBuffer() {
     if (this.buffer.length) {
       fs.appendFileSync(this.filePath, this.buffer.join('\n') + '\n');
       this.buffer.length = 0;
     }
-  }
-
-  writeImmediately(str: string) {
-    fs.appendFileSync(this.filePath, str + '\n');
   }
   err(str: string) {
     fs.appendFileSync(this.filePath, str + '\n');
