@@ -17,7 +17,8 @@
     "types": ["node", "@types"],
     "allowUnusedLabels": false,
     "outDir": "./dist",
-    "declaration": true
+    "declaration": true,
+    "lib": ["es2023"]
   },
   "exclude": ["node_modules", "dist", "coverage", ".build", ".webpack", ".vscode"],
   "include": ["src"],
