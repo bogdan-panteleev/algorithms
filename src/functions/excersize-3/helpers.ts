@@ -24,7 +24,7 @@ export function createAdjacencyListFromMatrix(matrix: number[][]): AdjacencyList
         list[from] = [];
       }
       const weight = matrix[from][to];
-      if (weight >= 0) {
+      if (weight > 0) {
         list[from].push({ to, weight });
       }
     }
@@ -34,8 +34,7 @@ export function createAdjacencyListFromMatrix(matrix: number[][]): AdjacencyList
 }
 
 export function createAdjacencyListFromList(rows: [number, number, number][], vertexesCount: number): AdjacencyList {
-  const list: AdjacencyList = new Array(vertexesCount + 1);
-  list[0] = [];
+  const list: AdjacencyList = Array.from({ length: vertexesCount + 1 }, () => []);
 
   for (let row of rows) {
     const [from, to, weight] = row;
@@ -46,7 +45,7 @@ export function createAdjacencyListFromList(rows: [number, number, number][], ve
       list[to] = [];
     }
     list[from].push({ to, weight });
-    list[to].push({ to: from, weight });
+    // list[to].push({ to: from, weight });
   }
 
   return list;

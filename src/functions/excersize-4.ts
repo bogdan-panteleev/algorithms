@@ -2,7 +2,8 @@ import * as process from 'process';
 import fs from 'fs';
 import path from 'path';
 import { FileLogger, stringToArray } from './warm-up/helpers';
-import { biggestCommonSubsequence } from './trainings-3-division-B/task30';
+import { createAdjacencyListFromMatrix } from './excersize-3/helpers';
+import { findCycle } from './trainings-3-division-B/task35';
 
 try {
   const fileLogger = new FileLogger(path.join(__dirname, './output.txt'));
@@ -10,8 +11,13 @@ try {
   const rows = data.toString().trim().split(/\n/);
   fileLogger.createFile();
 
-  const result = biggestCommonSubsequence(stringToArray(rows[1]), stringToArray(rows[3]));
-  fileLogger.write(result.join(' '));
+  const vertexes = rows.map((str) => [0].concat(stringToArray(str)));
+  const result = findCycle(createAdjacencyListFromMatrix(vertexes));
+  fileLogger.write(result.length === 0 ? 'NO' : 'YES');
+  if (result.length) {
+    fileLogger.write(result.length.toString());
+    fileLogger.write(result.join(' '));
+  }
 
   fileLogger.flushBuffer();
   process.exit();
