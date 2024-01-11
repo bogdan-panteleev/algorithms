@@ -15,6 +15,11 @@ export interface VertexWithPathTracking extends Vertex {
 }
 
 export function createAdjacencyListFromMatrix(matrix: number[][]): AdjacencyList {
+  matrix.forEach((arr) => {
+    arr.unshift(0);
+  });
+  matrix.unshift([]);
+
   const list: AdjacencyList = [];
 
   for (let from = 0; from < matrix.length; from++) {
