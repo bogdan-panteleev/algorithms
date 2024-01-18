@@ -1,4 +1,4 @@
-import { AdjacencyList } from '../excersize-3/helpers';
+import { AdjacencyList } from '../trainings-1/excersize-3/helpers';
 
 export function shortestPathBfsDetailed(graph: AdjacencyList, from: number, to: number): number[] {
   if (from === to) {

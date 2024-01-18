@@ -1,8 +1,8 @@
 import * as process from 'process';
 import fs from 'fs';
 import path from 'path';
-import { FileLogger, stringToArray } from './warm-up/helpers';
-import { dotAndTriangle } from './trainings-2-division-B/excersize-1/dot-and-triangle';
+import { FileLogger, stringToArray } from './trainings-1/warm-up/helpers';
+import { dotAndTriangle } from './trainings-2/excersize-1B/dot-and-triangle';
 
 try {
   const fileLogger = new FileLogger(path.join(__dirname, './output.txt'));

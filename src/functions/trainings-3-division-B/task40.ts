@@ -1,4 +1,4 @@
-import { AdjacencyList } from '../excersize-3/helpers';
+import { AdjacencyList } from '../trainings-1/excersize-3/helpers';
 type workItem = {
   transfers: number;
   station: number;

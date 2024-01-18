@@ -1,4 +1,4 @@
-import { AdjacencyList } from '../excersize-3/helpers';
+import { AdjacencyList } from '../trainings-1/excersize-3/helpers';
 
 export function connectivityComponents(list: AdjacencyList): number[][] {
   const visited: number[] = new Array(list.length).fill(-1);

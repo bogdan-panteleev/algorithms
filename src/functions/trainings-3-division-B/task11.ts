@@ -1,4 +1,4 @@
-import { arrayIndexes } from '../warm-up/helpers';
+import { arrayIndexes } from '../trainings-1/warm-up/helpers';
 
 export class Stack<T> {
   constructor(private stack: T[] = []) {}

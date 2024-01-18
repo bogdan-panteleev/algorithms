@@ -1,4 +1,4 @@
-import { AdjacencyList } from '../excersize-3/helpers';
+import { AdjacencyList } from '../trainings-1/excersize-3/helpers';
 
 export function graphConnectivity(list: AdjacencyList): number[] {
   if (!list[1]) return [1];
