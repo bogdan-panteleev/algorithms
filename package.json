@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "excersize-4": "esbuild src/functions/excersize-4.ts --bundle --outdir=dist --platform=node --sourcemap --target=esnext && node dist/excersize-4.js",
-    "warm-up": "esbuild src/functions/warm-up.ts --bundle --outdir=dist --platform=node --sourcemap --target=esnext && node dist/warm-up.js"
+    "task-runner": "esbuild src/functions/task-runner.ts --bundle --outdir=dist --platform=node --sourcemap --target=esnext && node dist/task-runner.js"
   },
   "author": "",
   "license": "ISC",

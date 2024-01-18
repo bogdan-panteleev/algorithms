@@ -2,7 +2,7 @@ import * as process from 'process';
 import fs from 'fs';
 import path from 'path';
 import { FileLogger, stringToArray } from './warm-up/helpers';
-import { subwayWithoutTransfers } from './trainings-3-division-B/task40';
+import { dotAndTriangle } from './trainings-2-division-B/excersize-1/dot-and-triangle';
 
 try {
   const fileLogger = new FileLogger(path.join(__dirname, './output.txt'));
@@ -10,15 +10,10 @@ try {
   const rows = data.toString().trim().split(/\n/);
   fileLogger.createFile();
 
-  const totalLines = stringToArray(rows[1])[0];
-  const lines = rows
-    .slice(2, 2 + totalLines)
-    .map(stringToArray)
-    .map((line) => line.slice(1));
-  const AB = stringToArray(rows[rows.length - 1]);
+  const [d] = stringToArray(rows[0]);
+  const [x, y] = stringToArray(rows[1]);
 
-  const result = subwayWithoutTransfers(lines, AB[0], AB[1]);
-
+  const result = dotAndTriangle(d, x, y);
   fileLogger.write(result.toString());
 
   fileLogger.flushBuffer();
