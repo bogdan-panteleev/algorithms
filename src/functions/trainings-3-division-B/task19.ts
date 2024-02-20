@@ -1,5 +1,8 @@
+// Heap returns max value
 export class Heap<T> {
-  constructor(protected data: T[] = []) {}
+  constructor(protected data: T[] = []) {
+    this.heapify(data);
+  }
 
   protected heapify(arr: T[]): void {
     let firstChildlessElementIndex: number;
@@ -29,7 +32,8 @@ export class Heap<T> {
 
     let currentIndex = index;
     let parentIndex = Math.floor((index - 1) / 2);
-    while (parentIndex >= 0 && val > this.data[parentIndex]) {
+    // while (parentIndex >= 0 && val > this.data[parentIndex]) {
+    while (parentIndex >= 0 && val < this.data[parentIndex]) {
       this.data[currentIndex] = this.data[parentIndex];
       this.data[parentIndex] = val;
 
@@ -43,8 +47,9 @@ export class Heap<T> {
     let currentIndex = index;
     let children = this.getChildren(currentIndex);
 
-    while (children.length > 0 && children.some((ind) => this.data[ind] > val)) {
-      const maxChildIndex = children.reduce((max, current) => (this.data[current] > this.data[max] ? current : max));
+    // while (children.length > 0 && children.some((ind) => this.data[ind] > val)) {
+    while (children.length > 0 && children.some((ind) => this.data[ind] < val)) {
+      const maxChildIndex = children.reduce((max, current) => (this.data[current] < this.data[max] ? current : max));
       this.data[currentIndex] = this.data[maxChildIndex];
       this.data[maxChildIndex] = val;
 
@@ -69,5 +74,9 @@ export class Heap<T> {
     this.data[0] = this.data.pop() as T;
     this.siftBottom(0);
     return val;
+  }
+
+  getHead(): T | null {
+    return this.data.length === 0 ? null : this.data[0];
   }
 }

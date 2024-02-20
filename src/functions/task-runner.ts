@@ -1,17 +1,18 @@
 import * as process from 'process';
 import fs from 'fs';
 import path from 'path';
-import { FileLogger } from './trainings-1/warm-up/helpers';
-import { logicalExpression } from './trainings-3-division-A/task13';
+import { FileLogger, stringToArray } from './trainings-1/warm-up/helpers';
+import { horse } from './trainings-3-division-A/task26';
 
 try {
   const fileLogger = new FileLogger(path.join(__dirname, './output.txt'));
-  const data = fs.readFileSync(path.join(__dirname, './input.txt'));
-  const rows = data.toString().trim().split(/\n/);
+  let data = fs.readFileSync(path.join(__dirname, './input.txt'));
+  let rows = data.toString().trim().split(/\n/);
+  const [rowsNumber, columnsNumber] = stringToArray(rows[0]);
 
-  const result = logicalExpression(rows[0]);
+  const result = horse(rowsNumber, columnsNumber);
 
-  fileLogger.write(result ? '1' : '0');
+  fileLogger.write(result.toString());
   fileLogger.flushBuffer();
   process.exit();
 } catch (err: unknown) {
