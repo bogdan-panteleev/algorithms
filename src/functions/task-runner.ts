@@ -2,15 +2,15 @@ import * as process from 'process';
 import fs from 'fs';
 import path from 'path';
 import { FileLogger, stringToArray } from './trainings-1/warm-up/helpers';
-import { horse } from './trainings-3-division-A/task26';
+import { sawing } from './trainings-3-division-A/task30';
 
 try {
   const fileLogger = new FileLogger(path.join(__dirname, './output.txt'));
-  let data = fs.readFileSync(path.join(__dirname, './input.txt'));
-  let rows = data.toString().trim().split(/\n/);
-  const [rowsNumber, columnsNumber] = stringToArray(rows[0]);
+  const data = fs.readFileSync(path.join(__dirname, './input.txt'));
+  const rows = data.toString().trim().split(/\n/).map(stringToArray);
+  const [length] = rows[0];
 
-  const result = horse(rowsNumber, columnsNumber);
+  const result = sawing(length, rows[1]);
 
   fileLogger.write(result.toString());
   fileLogger.flushBuffer();
